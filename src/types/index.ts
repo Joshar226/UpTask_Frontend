@@ -15,11 +15,18 @@ export type UserRegistrationForm = Pick<Auth, 'name' | 'email' | 'password' | 'p
 export type RequestConfirmationCodeForm = Pick<Auth, 'email'>
 export type ForgotPasswordForm = Pick<Auth, 'email'>
 export type NewPasswordFormType = Pick<Auth, 'password' | 'password_confirmation'>
-
 export type ConfirmToken = Pick<Auth, 'token'>
 
 
+/**USERS */
+export const userSchema = authSchema.pick({
+    name: true,
+    email: true
+}).extend({
+    _id: z.string()
+})
 
+export type User = z.infer<typeof userSchema>
 
 
 //Projects
