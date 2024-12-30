@@ -11,7 +11,7 @@ export default function EditTaskData() {
     const taskId = queryParams.get('editTask')!
 
     const { data, isError } = useQuery({
-        queryKey: ['task', {taskId}],
+        queryKey: ['task', taskId],
         queryFn: () => getTaskById({projectId, taskId}),
         enabled: !!taskId,
         retry: 1
